@@ -163,13 +163,12 @@ let increase = async function (cards) {
         document
           .querySelector(`.card-${randomCards[i]}`)
           .classList.toggle("increase");
-        for (let j = 0; j < randomCards.length; j++) {
-          if (j != i) {
-            document
-              .querySelector(`.card-${randomCards[j]}`)
-              .classList.remove("increase");
-          }
-        }
+
+        randomCards
+          .filter((elem, index) => index != i)
+          .forEach((elem) =>
+            document.querySelector(`.card-${elem}`).classList.remove("increase")
+          );
       });
     document.querySelectorAll(`.name-select`).forEach((element) =>
       element.addEventListener("click", function (e) {
@@ -217,9 +216,7 @@ let submitData = async function (cards) {
   return randomCards;
 };
 
-let finish = async function (cards) {
-  let rendomCards = cards;
-
+let finish = async function (randomCards) {
   document.querySelector(".btn-finish").addEventListener("click", function () {
     if (namesOfPlayers.length !== randomCards.length) {
       document.querySelector(`.error-finish`).innerHTML =
