@@ -80,7 +80,7 @@ let startCards = function () {
         inputNumber.value < 3 ||
         inputNumber.value > 6
       ) {
-        let errorMes = "Please write number of players correct (3-6 players)";
+        let errorMes = "Please write a correct number of players (3-6 players)";
         document.querySelector(".error-massege").innerHTML = errorMes;
       } else {
         arrayOfCards = [0, 1, 2, 3, 4, 5];
