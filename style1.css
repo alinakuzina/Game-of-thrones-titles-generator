@@ -1,0 +1,178 @@
+*/ * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* font-size: 10px;
+       10px/16px = 0.625 = 62.5%*/
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #033324;
+  background-color: #e9ddcc;
+  transition: all 1s;
+}
+
+.error-massege-in-card,
+.error-massege {
+  color: inherit;
+  font-size: 1.2rem;
+  color: #af440a;
+}
+
+.label-start {
+  color: inherit;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+}
+
+.conteiner-btn {
+  max-width: 30rem;
+  margin: 6rem auto;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+}
+
+.container-btn-finish {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin: 0 auto;
+}
+
+.section-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-flow: row;
+  gap: 2rem;
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 2rem;
+  font-size: 1.3rem;
+  letter-spacing: 0.05rem;
+}
+
+.card-box {
+  background-color: #e9ddcc;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 12px;
+  padding: 2rem;
+  border-radius: 5%;
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.493);
+}
+
+.img-card {
+  width: 100%;
+}
+
+.header-title {
+  text-decoration: underline;
+}
+
+.input-number,
+.name-select input,
+.name-select select {
+  color: inherit;
+  width: 50%;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  font-family: inherit;
+  border: none;
+  background-color: #fdf2e9;
+  border-radius: 9px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.137);
+}
+
+.name-select button {
+  background-color: #054c37;
+  color: #fff;
+  border: none;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.name-select button:hover {
+  background-color: #066649;
+}
+
+.btn-start {
+  align-content: center;
+  letter-spacing: 0.2rem;
+  background-color: #12b886;
+  color: #fff;
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  font-weight: 600;
+  font-size: 2.4rem;
+  padding: 1.5rem 4rem;
+  border-radius: 9px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.btn-start:hover {
+  background-color: #39997c;
+}
+
+.hidden {
+  height: 0;
+  display: none;
+  text-indent: -9999px;
+}
+
+.btn-finish {
+  align-content: center;
+  letter-spacing: 0.2rem;
+  background-color: #12b886;
+  color: #fff;
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  font-weight: 600;
+  font-size: 1.6rem;
+  padding: 1.5rem 4rem;
+  border-radius: 9px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.btn-finish:hover {
+  background-color: #39997c;
+}
+
+.new-text {
+  font-size: 2.4rem;
+  color: #e8590c;
+  text-decoration: underline;
+}
+
+.increase {
+  transform: scale(1.3);
+}
+
+.form-number-of-players {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.input-number {
+  max-width: 5rem;
+}
