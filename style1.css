@@ -136,7 +136,7 @@ body {
   text-indent: -9999px;
 }
 
-.btn-finish {
+.btn-new-tern {
   align-content: center;
   letter-spacing: 0.2rem;
   background-color: #12b886;
@@ -152,10 +152,36 @@ body {
   cursor: pointer;
 }
 
-.btn-finish:hover {
+.btn-new-tern:hover {
   background-color: #39997c;
 }
 
+.btn-new-game {
+  background-color: #e9ddcc;
+  border: 0.1rem solid #fff;
+  color: #066649;
+  font-weight: 600;
+  font-size: 1.6rem;
+  padding: 1.5rem 4rem;
+  border-radius: 9px;
+  transition: all 0.3s;
+  cursor: pointer;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.137);
+}
+
+.btn-new-game:hover {
+  background-color: #39997c;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.137);
+}
+
+.conteiner-option-next-play {
+  max-width: 50rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 4rem auto;
+  gap: 10rem;
+}
 .new-text {
   font-size: 2.4rem;
   color: #e8590c;

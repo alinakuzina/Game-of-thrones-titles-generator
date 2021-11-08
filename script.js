@@ -67,6 +67,8 @@ let arrayOfCards = [0, 1, 2, 3, 4, 5];
 
 let numberOfPlayer = 0;
 
+let showSectionNumber = 0;
+
 let randomNum = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
@@ -133,14 +135,16 @@ let startCards = function () {
                 randomCards[i]
               }' type="text" placeholder='Your Name'  >
               </input>
-              <button class='btn-submit-${randomCards[i]}'>Submit</button>
+              <button class='btn-submit btn-submit-${
+                randomCards[i]
+              }'>Submit</button>
               </div>
             </div>
           </div>
             </div>
           </div>`;
         }
-        sectionCardConteiner.innerHTML = newHtml + finish;
+        sectionCardConteiner.innerHTML = newHtml;
         document.querySelector(
           `.img-${randomCards[randomCards.length - 1]}`
         ).onload = function () {
@@ -153,7 +157,7 @@ let startCards = function () {
   });
 };
 
-let increase = async function (cards) {
+let increase = function (cards) {
   let randomCards = cards;
   for (let i = 0; i < randomCards.length; i++) {
     console.log(randomCards[i]);
@@ -179,8 +183,7 @@ let increase = async function (cards) {
   return randomCards;
 };
 
-let submitData = async function (cards) {
-  let randomCards = cards;
+let submitData = function (randomCards) {
   for (let i = 0; i < randomCards.length; i++) {
     document
       .querySelector(`.btn-submit-${randomCards[i]}`)
@@ -216,19 +219,57 @@ let submitData = async function (cards) {
   return randomCards;
 };
 
-let finish = async function (randomCards) {
-  document.querySelector(".btn-finish").addEventListener("click", function () {
-    if (namesOfPlayers.length !== randomCards.length) {
-      document.querySelector(`.error-finish`).innerHTML =
-        "Add all player's Name";
-    } else {
+// let finish = function (randomCards) {
+//   document.querySelector(".btn-finish").addEventListener("click", function () {
+//     if (namesOfPlayers.length !== randomCards.length) {
+//       document.querySelector(`.error-finish`).innerHTML =
+//         "Add all player's Name";
+//     } else {
+//       for (let j = 0; j < randomCards.length; j++) {
+//         document
+//           .querySelector(`.card-${randomCards[j]}`)
+//           .classList.remove("increase");
+//       }
+
+//       document.querySelector(`.error-finish`).innerHTML = "";
+//       for (let i = 0; i < randomCards.length; i++) {
+//         document.querySelector(
+//           `.error-massege-in-card-${randomCards[i]}`
+//         ).innerHTML = "";
+//         document
+//           .querySelector(`.card-${randomCards[i]}`)
+//           .classList.toggle("hidden");
+//       }
+//       document
+//         .querySelector(".container-btn-finish")
+//         .classList.toggle("hidden");
+//     }
+//   });
+//   return randomCards;
+// };
+
+let obsorverFunc = function (randomCards) {
+  const observer = new MutationObserver(function () {
+    console.log("callback that runs when observer is triggered");
+    let numbOftrue = 0;
+    for (let i = 0; i < randomCards.length; i++) {
+      if (
+        document
+          .querySelector(`.card-${randomCards[i]}`)
+          .classList.contains("hidden")
+      ) {
+        numbOftrue++;
+      }
+    }
+    console.log(numbOftrue, randomCards.length);
+    if (randomCards.length === numbOftrue) {
+      console.log("all is hidden");
       for (let j = 0; j < randomCards.length; j++) {
         document
           .querySelector(`.card-${randomCards[j]}`)
           .classList.remove("increase");
       }
 
-      document.querySelector(`.error-finish`).innerHTML = "";
       for (let i = 0; i < randomCards.length; i++) {
         document.querySelector(
           `.error-massege-in-card-${randomCards[i]}`
@@ -237,14 +278,14 @@ let finish = async function (randomCards) {
           .querySelector(`.card-${randomCards[i]}`)
           .classList.toggle("hidden");
       }
-      document
-        .querySelector(".container-btn-finish")
-        .classList.toggle("hidden");
     }
   });
+  const elementToObserve = document.querySelector(".section-cards");
+  observer.observe(elementToObserve, { subtree: true, childList: true });
 };
 
 startCards()
   .then((x) => increase(x))
   .then((x) => submitData(x))
-  .then((x) => finish(x));
+  // .then((x) => finish(x))
+  .then((x) => obsorverFunc(x));
