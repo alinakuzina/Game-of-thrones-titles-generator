@@ -39,6 +39,7 @@ body {
   display: grid;
   gap: 3rem;
   grid-template-columns: 1fr;
+  transition: all 1s;
 }
 
 .container-btn-finish {
@@ -79,6 +80,7 @@ body {
 }
 
 .input-number,
+.input-name,
 .name-select input,
 .name-select select {
   color: inherit;
@@ -110,7 +112,9 @@ body {
   background-color: #066649;
 }
 
-.btn-start {
+.btn-start,
+.btn-submit-number,
+.btn-finish {
   align-content: center;
   letter-spacing: 0.2rem;
   background-color: #12b886;
@@ -126,7 +130,9 @@ body {
   cursor: pointer;
 }
 
-.btn-start:hover {
+.btn-start:hover,
+.btn-submit-number:hover,
+.btn-finish:hover {
   background-color: #39997c;
 }
 
@@ -201,4 +207,15 @@ body {
 
 .input-number {
   max-width: 5rem;
+}
+
+.type-names {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 30rem;
+  gap: 1rem;
+}
+
+.input-name {
+  width: 100%;
 }
