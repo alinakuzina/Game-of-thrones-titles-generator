@@ -68,6 +68,7 @@ let arrayOfCards = [0, 1, 2, 3, 4, 5];
 let numberOfPlayer = 0;
 
 let randomCards = [];
+let namesForOptions = [];
 
 let randomNum = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -80,8 +81,20 @@ let recieveNames = function () {
     }
     numberOfPlayer = inputNumber.value;
     console.log(namesOfPlayers);
+    namesForOptions = [...namesOfPlayers];
     resolve(namesOfPlayers);
   });
+};
+
+let changeOptions = function () {
+  let optionHtml = "";
+  for (let i = 0; i < namesForOptions.length; i++) {
+    optionHtml += `<option value=${namesForOptions[i]}>${namesForOptions[i]}</option>`;
+  }
+  for (j = 0; j < 6; j++) {
+    document.querySelector(`.input-${j}`).innerHTML = optionHtml;
+  }
+  console.log(namesForOptions);
 };
 
 let NameOptions = function () {
@@ -193,29 +206,50 @@ let submitData = function () {
         document.querySelector(`.new-text-${i}`).innerHTML = `${nameOfGamer}`;
 
         document.querySelector(`.card-${i}`).classList.add("hidden");
+
+        for (let j = 0; j < namesForOptions.length; j++)
+          if (namesForOptions[j] === nameOfGamer) {
+            namesForOptions.splice(j, 1);
+          }
+
+        changeOptions();
       });
   }
+
   return randomCards;
 };
 
 let finish = function () {
-  console.log("finish");
   document.querySelector(".btn-finish").addEventListener("click", function () {
-    for (let j = 0; j < randomCards.length; j++) {
-      document
-        .querySelector(`.card-${randomCards[j]}`)
-        .classList.remove("increase");
+    let allContHidden = true;
+    for (let k = 0; k < 6; k++) {
+      if (!document.querySelector(`.card-${k}`).classList.contains("hidden")) {
+        allContHidden = false;
+      }
     }
+    if (allContHidden) {
+      for (let j = 0; j < randomCards.length; j++) {
+        document
+          .querySelector(`.card-${randomCards[j]}`)
+          .classList.remove("increase");
+      }
 
-    console.log(randomCards);
-    for (let i = 0; i < randomCards.length; i++) {
-      console.log("finish hidden");
+      console.log(randomCards);
+      for (let i = 0; i < randomCards.length; i++) {
+        console.log("finish hidden");
+        document
+          .querySelector(`.card-${randomCards[i]}`)
+          .classList.toggle("hidden");
+      }
       document
-        .querySelector(`.card-${randomCards[i]}`)
+        .querySelector(".container-btn-finish")
         .classList.toggle("hidden");
+      document.querySelector(".next-option-hidden").classList.remove("hidden");
+      document.querySelector(".error-finish").innerHTML = "";
+    } else {
+      document.querySelector(".error-finish").innerHTML =
+        "All players should select a cards!";
     }
-    document.querySelector(".container-btn-finish").classList.toggle("hidden");
-    document.querySelector(".next-option-hidden").classList.remove("hidden");
   });
   return randomCards;
 };
@@ -249,10 +283,11 @@ let newTern = function () {
           .classList.remove("hidden");
       }
       randomCards = [];
-
-      [0, 1, 2, 3, 4, 5].forEach((elem) => {
+      namesForOptions = [...namesOfPlayers];
+      [(0, 1, 2, 3, 4, 5)].forEach((elem) => {
         console.log(elem);
         let options = NameOptions();
+        changeOptions();
         document.querySelector(`.card-${elem}`).classList.remove("increase");
         document.querySelector(`.input-${elem}`).innerHTML = options;
       });
