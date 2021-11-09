@@ -84,16 +84,18 @@ let recieveNames = function () {
   });
 };
 
+let NameOptions = function () {
+  let optionHtml = "";
+  for (let i = 0; i < namesOfPlayers.length; i++) {
+    optionHtml += `<option value=${namesOfPlayers[i]}>${namesOfPlayers[i]}</option>`;
+  }
+  return optionHtml;
+};
+
 let makeAllCards = function () {
   numberOfPlayer = inputNumber.value;
   let newHtml = "";
-  let NameOptions = function () {
-    let optionHtml = "";
-    for (let i = 0; i < namesOfPlayers.length; i++) {
-      optionHtml += `<option value=${namesOfPlayers[i]}>${namesOfPlayers[i]}</option>`;
-    }
-    return optionHtml;
-  };
+
   let finish = ` <div class='container-btn-finish'>
     <p class='error-massege-in-card error-finish'></p>
     <button class="btn-finish">Finish</button></div>`;
@@ -250,7 +252,9 @@ let newTern = function () {
 
       [0, 1, 2, 3, 4, 5].forEach((elem) => {
         console.log(elem);
+        let options = NameOptions();
         document.querySelector(`.card-${elem}`).classList.remove("increase");
+        document.querySelector(`.input-${elem}`).innerHTML = options;
       });
 
       renderCards();

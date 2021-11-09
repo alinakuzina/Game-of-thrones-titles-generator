@@ -16,7 +16,7 @@ body {
   font-weight: 400;
   color: #033324;
   background-color: #e9ddcc;
-  transition: all 2s linear;
+  transition: all 5s linear;
 }
 
 .error-massege-in-card,
@@ -217,5 +217,5 @@ body {
 }
 
 .input-name {
-  width: 100%;
+  width: 95%;
 }
