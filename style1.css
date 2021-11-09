@@ -137,6 +137,10 @@ body {
   background-color: #39997c;
 }
 
+.opacity {
+  opacity: 50%;
+}
+
 .hidden {
   height: 0;
   display: none;

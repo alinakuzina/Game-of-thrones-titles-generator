@@ -89,7 +89,7 @@ let recieveNames = function () {
 let changeOptions = function () {
   let optionHtml = "";
   for (let i = 0; i < namesForOptions.length; i++) {
-    optionHtml += `<option value=${namesForOptions[i]}>${namesForOptions[i]}</option>`;
+    optionHtml += `<option value='${namesForOptions[i]}'>${namesForOptions[i]}</option>`;
   }
   for (j = 0; j < 6; j++) {
     document.querySelector(`.input-${j}`).innerHTML = optionHtml;
@@ -100,7 +100,7 @@ let changeOptions = function () {
 let NameOptions = function () {
   let optionHtml = "";
   for (let i = 0; i < namesOfPlayers.length; i++) {
-    optionHtml += `<option value=${namesOfPlayers[i]}>${namesOfPlayers[i]}</option>`;
+    optionHtml += `<option value='${namesOfPlayers[i]}'>${namesOfPlayers[i]}</option>`;
   }
   return optionHtml;
 };
@@ -137,7 +137,7 @@ let makeAllCards = function () {
       
           <div class='new-text new-text-${i}'></div>
           <div class='name-select name-select-${i}'>
-          <select class='input-${i}'>
+          <select class='input-${i}' >
           ${NameOptions()}
           </select>
           <button class='btn-submit btn-submit-${i}'>Submit</button>
@@ -207,11 +207,11 @@ let submitData = function () {
 
         document.querySelector(`.card-${i}`).classList.add("hidden");
 
-        for (let j = 0; j < namesForOptions.length; j++)
+        for (let j = 0; j < namesForOptions.length; j++) {
           if (namesForOptions[j] === nameOfGamer) {
             namesForOptions.splice(j, 1);
           }
-
+        }
         changeOptions();
       });
   }
@@ -248,7 +248,7 @@ let finish = function () {
       document.querySelector(".error-finish").innerHTML = "";
     } else {
       document.querySelector(".error-finish").innerHTML =
-        "All players should select a cards!";
+        "All players should select a card!";
     }
   });
   return randomCards;
@@ -344,7 +344,7 @@ document
       numberOfPlayer = inputNumber.value;
       let textLine = ``;
       for (let i = 0; i < numberOfPlayer; i++) {
-        textLine += `<input class="input-name input-name-${i}" type="text" placeholder="Your name" />`;
+        textLine += `<input class="input-name input-name-${i}" type="text" placeholder="Your name" autocorrect="off" autocomplete="off" required/>`;
         document.querySelector(".type-names").innerHTML = textLine;
       }
     }
