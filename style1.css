@@ -16,7 +16,7 @@ body {
   font-weight: 400;
   color: #033324;
   background-color: #e9ddcc;
-  transition: all 1s;
+  transition: all 2s linear;
 }
 
 .error-massege-in-card,
@@ -47,6 +47,7 @@ body {
   grid-template-columns: 1fr;
   gap: 0.5rem;
   margin: 0 auto;
+  transition: all 5s linear;
 }
 
 .section-cards {
@@ -139,7 +140,6 @@ body {
 .hidden {
   height: 0;
   display: none;
-  text-indent: -9999px;
 }
 
 .btn-new-tern {

@@ -104,7 +104,7 @@ let makeAllCards = function () {
         <img
           class="img-card img-${i}"
           src="${arrayOfCardInfo[i][1]}"
-          alt="Master of wispers"
+          alt="${arrayOfCardInfo[i][2]}"
         />
         <div class="cars-text ">
           <p class="header-title"><strong>${arrayOfCardInfo[i][2]}</strong></p>
@@ -155,21 +155,17 @@ let renderCards = function () {
 };
 
 let increase = function () {
-  for (let i = 0; i < randomCards.length; i++) {
-    console.log(randomCards[i]);
-    document
-      .querySelector(`.card-${randomCards[i]}`)
-      .addEventListener("click", function () {
-        document
-          .querySelector(`.card-${randomCards[i]}`)
-          .classList.toggle("increase");
+  for (let i = 0; i < 6; i++) {
+    console.log(i);
+    document.querySelector(`.card-${i}`).addEventListener("click", function () {
+      document.querySelector(`.card-${i}`).classList.toggle("increase");
 
-        randomCards
-          .filter((elem, index) => index != i)
-          .forEach((elem) =>
-            document.querySelector(`.card-${elem}`).classList.remove("increase")
-          );
-      });
+      [0, 1, 2, 3, 4, 5]
+        .filter((elem, index) => index != i)
+        .forEach((elem) =>
+          document.querySelector(`.card-${elem}`).classList.remove("increase")
+        );
+    });
     document.querySelectorAll(`.name-select`).forEach((element) =>
       element.addEventListener("click", function (e) {
         e.stopPropagation();
@@ -252,10 +248,17 @@ let newTern = function () {
       }
       randomCards = [];
 
+      [0, 1, 2, 3, 4, 5].forEach((elem) => {
+        console.log(elem);
+        document.querySelector(`.card-${elem}`).classList.remove("increase");
+      });
+
       renderCards();
       document
         .querySelector(".container-btn-finish")
         .classList.toggle("hidden");
+
+      document.querySelector(".next-option-hidden").classList.add("hidden");
     });
 };
 
